@@ -1,0 +1,20 @@
+
+<div class="container col-6">
+
+  <h3>Bienvenido</h3>
+
+
+<form (ngSubmit)="onLogin()" [formGroup]="loginInput">
+
+  <div class="form-group">
+      <input type="text" class="form-control" placeholder="Ingrese el usuario" formControlName="username">
+
+  <br>
+
+    <input type="password" class="form-control" placeholder="Ingrese la contraseña" formControlName="password">
+
+  </div>
+<button type="submit" class="btn btn-primary" [disabled]="loginInput.invalid" color="primary">Login</button>
+<br>
+</form>
+</div>

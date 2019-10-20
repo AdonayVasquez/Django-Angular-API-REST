@@ -1,0 +1,52 @@
+<div class="container m-20">
+    <div class="card puntero" style="width: 30rem;" *ngIf="vistaDetalle.imagen">
+      <img [src]="vistaDetalle.imagen" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{ vistaDetalle.titulo }}</h5>
+      </div>
+    </div>
+</div>
+
+<div class="container" >
+  <h3>{{ vistaDetalle.descripcion}} </h3>
+  <a [routerLink]="['/form']" class="btn btn-outline-primary ">Regresar</a>
+</div>
+
+<div class="container" style="margin-bottom: 50px;" >
+  <div *ngIf="!isAddEditMode">
+      <button  class="btn btn-outline-success" mat-ripple mat-raised-button (click)="editMovieClicked()"
+      color="primary">Editar Post</button>
+      <button class="btn btn-outline-danger m-5" mat-ripple mat-raised-button (click)="deleteMovieClicked()"
+                      >Eliminar Post</button>
+
+  </div>
+
+<!-- Doble condicional, isAddEditMode es una variable booleana que nos indicara cuando queremos que se muestre
+el formulario de agregar pelicula -->
+  <div *ngIf="isAddEditMode">
+    <h2>
+      <span *ngIf="isEdit">Edit</span>
+      <span *ngIf="!isEdit">New</span>
+      Movie:
+    </h2>
+
+    <form (ngSubmit)="submitPost()" [formGroup] = "postInput">
+      <div class="form-group">
+        <label for="formGroupExampleInput">Titulo</label>
+        <input type="text" class="form-control" formControlName="titulo" id="formGroupExampleInput" placeholder="Escriba el titulo">
+      </div>
+      <div class="form-group">
+        <label for="formGroupExampleInput2">Descripcion</label>
+        <input type="text" class="form-control" formControlName="descripcion" id="formGroupExampleInput2" placeholder="Agregue la descripcion">
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlFile1">Imagen</label>
+
+       <!--  (change)="onChange($event)" -->
+        <input type="file" (change)="onChange($event)" id="exampleFormControlFile1" >
+      </div>
+      <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+
+  </div>
+</div>
