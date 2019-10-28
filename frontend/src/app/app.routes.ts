@@ -12,6 +12,7 @@ const APP_ROUTES: Routes = [
     { path: 'login', component: LoginComponent},
     { path: 'form', component: FormComponent},
     { path: 'vista/:id', component: VistaComponent},
+    { path: 'home', component: BodyComponent},
     { path: '**', pathMatch: 'full', redirectTo: 'login'}
 
 ];

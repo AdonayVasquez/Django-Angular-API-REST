@@ -21,7 +21,7 @@ export class FormComponent implements OnInit {
               private httpClient:HttpClient) { }
 
   ngOnInit() {
-    this.getPosts();
+
 
     this.postInput = this.fb.group({
       titulo: ['', Validators.required],
@@ -51,9 +51,12 @@ export class FormComponent implements OnInit {
     this.diarioService.postPost(fd)
        .subscribe(res => {
          console.log(res);
+         alert('Guardado con exito');
+         this.postInput.reset();
     },
     (err) => {
       console.log(err);
+      alert('Ocurrio un error');
     });
       //Sin usar el servicio lo podriamos poner directamente asi:
     /* this.httpClient.post('http://127.0.0.1:8000/post/entradas/', fd)
@@ -61,14 +64,6 @@ export class FormComponent implements OnInit {
         console.log(res);
       }); */
   }
-
-  getPosts() {
-    this.diarioService.getPost()
-      .subscribe(data => {
-        this.posts = data;
-        console.log(this.posts);
-      });
-    }
 
 }
 

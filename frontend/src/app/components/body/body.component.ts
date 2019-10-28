@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DiarioService } from '../../services/diario.service';
 
 
 @Component({
@@ -7,6 +8,14 @@ import { Component } from '@angular/core';
 })
 
 export class BodyComponent {
+  public posts;
+
+  constructor(private diarioService: DiarioService) {
+
+  }
+  ngOnInit() {
+    this.getPosts();
+  }
 
     mostrar = true;
 
@@ -16,5 +25,13 @@ export class BodyComponent {
     };
 
     personajes: String[] = ['Venom','Carnage','Blackcat'];
+
+    getPosts() {
+      this.diarioService.getPost()
+        .subscribe(data => {
+          this.posts = data;
+          console.log(this.posts);
+        });
+      }
 
 }

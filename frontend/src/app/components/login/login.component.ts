@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('token', response['token']);
         //this.global.me = response['user'];
         // Una vez comprobado el login, navega hasta home
-        this.router.navigate(['/form']);
+        this.router.navigate(['/home']);
     },
     error => {
       console.log('error', error);

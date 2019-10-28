@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DiarioService } from 'src/app/services/diario.service';
 import { FormGroup, FormBuilder, Validators, FormControl, FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
@@ -22,7 +22,8 @@ export class VistaComponent implements OnInit {
   constructor( private activatedRoute: ActivatedRoute,
                private diarioService: DiarioService,
                private fb: FormBuilder,
-               private httpClient:HttpClient) {
+               private httpClient:HttpClient,
+               private router: Router) {
     this.activatedRoute.params.subscribe(res=> {
       this.iden = res['id'];
     });
@@ -97,6 +98,7 @@ export class VistaComponent implements OnInit {
         alert('Entrada borrada con exito');
         console.log("Post borrado con exito");
         this.isAddEditMode = false;
+        this.router.navigate(['/home']);
       });
   }
 

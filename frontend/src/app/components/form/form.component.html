@@ -1,4 +1,4 @@
-
+<br>
 <div class="container col-6">
 
     <form (ngSubmit)="submitPost()" [formGroup] = "postInput">
@@ -20,20 +20,7 @@
     </form>
   </div>
 
-  <div>
-    <div class="card-columns m-5 animated fadeIn">
-      <div  *ngFor="let item of posts; let i = index" class="card puntero">
-        <img [src]="item.imagen" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">{{ item.titulo }}</h5>
-          <p class="card-text">
-            <span class= "badge badge-pill badge-primary">{{ item.descripcion}} </span>
-            <a [routerLink]="['/vista', i]" class="btn btn-outline-primary">Ver mas...</a>
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
+
 
 
 
